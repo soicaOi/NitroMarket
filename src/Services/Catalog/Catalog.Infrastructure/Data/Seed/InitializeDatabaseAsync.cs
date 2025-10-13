@@ -16,17 +16,17 @@ public class InitializeDatabaseAsync : IInitialData
 
         foreach (var category in InitialData.Categories)
         {
-            if (session.Query<Category>().Any(c => c.Id == category.Id))
+            if (!session.Query<Category>().Any(c => c.Id == category.Id))
             {
-                session.Store(category);
+                session.Store<Category>(category);
             }
         }
 
         foreach (var item in InitialData.CatalogItems)
         {
-            if (session.Query<Category>().Any(c => c.Id == item.Id))
+            if (!session.Query<CatalogItem>().Any(c => c.Id == item.Id))
             {
-                session.Store(item);
+                session.Store<CatalogItem>(item);
             }
         }
 
