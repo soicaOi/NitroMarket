@@ -1,5 +1,4 @@
-﻿using Marten;
-using Marten.Schema;
+﻿using Marten.Schema;
 
 namespace Catalog.Infrastructure.Data.Seed;
 
