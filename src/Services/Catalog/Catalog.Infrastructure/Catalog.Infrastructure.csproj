@@ -3,6 +3,7 @@
     <ProjectReference Include="..\Catalog.Application\Catalog.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Marten" Version="8.3.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
   </ItemGroup>
   <PropertyGroup>
