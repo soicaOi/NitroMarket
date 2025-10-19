@@ -5,9 +5,9 @@ using Catalog.Domain.Repositories;
 namespace Catalog.Application.Handlers.CatalogItemHandlers;
 
 public class GetCatalogItemsQueryHandler(ICatalogItemRepository catalogItemRepository)
-    : IRequestHandler<GetCatalogItemQuery, GetCatalogItemsResult>
+    : IRequestHandler<GetCatalogItemsQuery, GetCatalogItemsResult>
 {
-    public async Task<GetCatalogItemsResult> Handle(GetCatalogItemQuery request, CancellationToken cancellationToken)
+    public async Task<GetCatalogItemsResult> Handle(GetCatalogItemsQuery query, CancellationToken cancellationToken)
     {
         var catalogItems = await catalogItemRepository.GetAllCatalogItemsAsync();
         
