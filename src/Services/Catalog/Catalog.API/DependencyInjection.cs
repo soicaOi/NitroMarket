@@ -14,9 +14,11 @@ public static class DependencyInjection
         services.AddSwaggerGen();
 
         var assembly = typeof(GetBrandsQuery).Assembly;
+        var licenseKey = configuration.GetSection("MediatR:LicenseKey").Value;
 
         services.AddMediatR(config =>
         {
+            config.LicenseKey = licenseKey;
             config.RegisterServicesFromAssembly(assembly);
         });
 
