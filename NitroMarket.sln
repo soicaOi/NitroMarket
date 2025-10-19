@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Domain", "src\Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Infrastructure", "src\Services\Catalog\Catalog.Infrastructure\Catalog.Infrastructure.csproj", "{76E6F8DD-2E4E-4E5F-B1AA-F0BA80D318C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{754FC069-D67B-A9D7-50A1-8D1CA196D8F1}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-dev.yaml = docker-compose-dev.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +91,8 @@ Global
 		{CD82CF45-6C7E-4770-970C-A3B73AB7267A} = {C91C1CF1-1625-0789-F869-53D87D6277BA}
 		{C530EAC4-B66A-4A8A-B3E5-F2E1E58E60B1} = {C91C1CF1-1625-0789-F869-53D87D6277BA}
 		{76E6F8DD-2E4E-4E5F-B1AA-F0BA80D318C2} = {C91C1CF1-1625-0789-F869-53D87D6277BA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {971B9611-FA3D-4898-AB1F-976667EE2DF9}
 	EndGlobalSection
 EndGlobal
