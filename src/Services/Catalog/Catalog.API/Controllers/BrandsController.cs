@@ -6,6 +6,6 @@ public class BrandsController : ApiController
     public async Task<ActionResult<GetBrandsResult>> GetBrand()
     {
         var result = await Mediator.Send(new GetBrandsQuery());
-        return result;
+        return Ok(result);
     } 
 }
