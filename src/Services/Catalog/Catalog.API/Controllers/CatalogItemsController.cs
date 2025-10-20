@@ -1,4 +1,6 @@
-﻿using Catalog.Application.Queries.CatalogItemQueries;
+﻿using Catalog.Application.Commands.CatalogItemCommands;
+using Catalog.Application.Dtos;
+using Catalog.Application.Queries.CatalogItemQueries;
 using Catalog.Application.Responses.CatalogItemResponses;
 using System.Net;
 
@@ -22,7 +24,7 @@ public class CatalogItemsController : ApiController
 
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(GetCatalogItemByIdResult), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<GetCatalogItemByIdResult>> GetById(Guid id)
+    public async Task<ActionResult<GetCatalogItemByIdResult>> GetCatalogItemById(Guid id)
     {
         var result = await Mediator.Send(new GetCatalogItemByIdQuery(id));
 
@@ -50,7 +52,7 @@ public class CatalogItemsController : ApiController
     }
 
     [HttpGet("brand/{brandTitle}")]
-    [ProducesResponseType(typeof(GetCatalogItemsByTitleResult), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(GetCatalogItemByIdResult), (int)HttpStatusCode.OK)]
 
     public async Task<ActionResult<GetCatalogItemByIdResult>> GetByBrandTitle(string brandTitle)
     {
@@ -62,5 +64,18 @@ public class CatalogItemsController : ApiController
         }
 
         return Ok(result);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(CreateCatalogItemResult), StatusCodes.Status201Created)]
+    public async Task<ActionResult<CreateCatalogItemResult>> CreateCatalogItem([FromBody] CreateCatalogItemDto dto)
+    {
+        var result = await Mediator.Send(new CreateCatalogItemCommand(dto));
+
+        return CreatedAtAction(
+            nameof(GetCatalogItemById),
+            new { id = result.Id },
+            result
+        );
     }
 }
