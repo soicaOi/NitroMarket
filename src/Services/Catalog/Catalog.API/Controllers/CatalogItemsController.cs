@@ -12,7 +12,7 @@ public class CatalogItemsController : ApiController
     {
         var result = await Mediator.Send(new GetCatalogItemsQuery());
 
-        if (result.CatalogItems is null || !result.CatalogItems.Any())
+        if (result.Result is null || !result.Result.Any())
         {
             return NotFound($"Нет товаров");
         }
@@ -26,9 +26,9 @@ public class CatalogItemsController : ApiController
     {
         var result = await Mediator.Send(new GetCatalogItemByIdQuery(id));
 
-        if (result.CatalogItem is null)
+        if (result.Result is null)
         {
-            return NotFound($"Товар с таким идентификатором {id} не найден");
+            return NotFound($"Товар с таким идентификатором [{id}] не найден");
         }
 
         return Ok(result);
@@ -41,9 +41,24 @@ public class CatalogItemsController : ApiController
     {
         var result = await Mediator.Send(new GetCatalogItemsByTitleQuery(catalogItemTitle));
 
-        if (result.CatalogItems is null || !result.CatalogItems.Any())
+        if (result.Result is null || !result.Result.Any())
         {
-            return NotFound($"Товаров с таким названием {catalogItemTitle} не найдены");
+            return NotFound($"Товары с таким названием [{catalogItemTitle}] не найдены");
+        }
+
+        return Ok(result);
+    }
+
+    [HttpGet("brand/{brandTitle}")]
+    [ProducesResponseType(typeof(GetCatalogItemsByTitleResult), (int)HttpStatusCode.OK)]
+
+    public async Task<ActionResult<GetCatalogItemByIdResult>> GetByBrandTitle(string brandTitle)
+    {
+        var result = await Mediator.Send(new GetCatalogItemsByBrandTitleQuery(brandTitle));
+
+        if (result.Result is null || !result.Result.Any())
+        {
+            return NotFound($"Товары с таким брендом [{brandTitle}] не найдены");
         }
 
         return Ok(result);

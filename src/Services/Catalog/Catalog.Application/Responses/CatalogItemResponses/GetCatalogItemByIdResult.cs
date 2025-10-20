@@ -1,3 +1,3 @@
 ﻿namespace Catalog.Application.Responses.CatalogItemResponses;
 
-public record GetCatalogItemByIdResult(CatalogItem CatalogItem);
+public record GetCatalogItemByIdResult(CatalogItem Result);
