@@ -9,3 +9,4 @@ global using Catalog.Application.Dtos;
 global using Catalog.Domain.Repositories;
 global using Catalog.Application.Responses.CatalogItemResponses;
 global using Catalog.Application.Commands.CatalogItemCommands;
+global using Catalog.Domain.Specifications;
