@@ -1,6 +1,4 @@
 ﻿using Asp.Versioning;
-using Catalog.Application.Queries.CatalogItemQueries;
-using Catalog.Application.Responses.CatalogItemResponses;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
 

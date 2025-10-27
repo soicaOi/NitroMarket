@@ -7,3 +7,5 @@ global using Catalog.Application.Queries.BrandQueries;
 global using Catalog.Application.Responses.BrandResponses;
 global using Microsoft.AspNetCore.Mvc;
 global using MediatR;
+global using Catalog.Application.Queries.CatalogItemQueries;
+global using Catalog.Application.Responses.CatalogItemResponses;

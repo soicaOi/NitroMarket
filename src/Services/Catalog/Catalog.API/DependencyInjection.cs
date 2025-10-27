@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace Catalog.API;
@@ -31,6 +32,13 @@ public static class DependencyInjection
                 Title = "Catalog API",
                 Version = "v1",
             });
+            config.SwaggerDoc("v2", new OpenApiInfo
+            {
+                Title = "Catalog API",
+                Version = "v2",
+            });
+
+            config.EnableAnnotations();
         });
 
         var assembly = typeof(GetBrandsQuery).Assembly;
@@ -51,9 +59,11 @@ public static class DependencyInjection
     {
         app.MapControllers();
         app.UseSwagger();
-        app.UseSwaggerUI();
-
-        app.MapGet("/", () => "Hello World!");
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog API v1");
+            options.SwaggerEndpoint("/swagger/v2/swagger.json", "Catalog API v2");
+        });
 
         return app;
     }
