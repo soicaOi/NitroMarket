@@ -81,10 +81,17 @@ public class CatalogItemsController : ApiController
 
     [HttpPut]
     [ProducesResponseType(typeof(UpdateCatalogItemResult), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<UpdateCatalogItemResult>> UpdateCatalogItem([FromBody] UpdateCatalogItemCommand command)
+    public async Task<ActionResult<UpdateCatalogItemResult>> UpdateCatalogItem([FromBody] UpdateCatalogItemDto dto)
     {
-        var result = await Mediator.Send(command);
+        var result = await Mediator.Send(new UpdateCatalogItemCommand(dto));
         return Ok(result);
     }
 
+    [HttpDelete("{id}")]
+    [ProducesResponseType(typeof(DeleteCatalogItemResult), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<DeleteCatalogItemResult>> DeleteCatalogItem(Guid id)
+    {
+        var result = await Mediator.Send(new DeleteCatalogItemCommand(id));
+        return Ok(result);
+    }
 }
