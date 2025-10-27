@@ -9,10 +9,20 @@ public class CatalogRepository (IDocumentSession session)
         return await session.Query<Brand>().ToListAsync();
     }
 
+    public async Task<Brand?> GetBrandAsync(Guid id)
+    {
+        return await session.LoadAsync<Brand>(id);
+    }
+
     // ICategoryRepository
     public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
     {
         return await session.Query<Category>().ToListAsync();
+    }
+
+    public async Task<Category?> GetCategoryAsync(Guid id)
+    {
+        return await session.LoadAsync<Category>(id);
     }
 
     // ICatalogItemRepository
@@ -63,5 +73,6 @@ public class CatalogRepository (IDocumentSession session)
         await session.SaveChangesAsync();
         return true;
     }
+
 }
     

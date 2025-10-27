@@ -9,7 +9,7 @@ public class CreateCatalogItemHandler(ICatalogItemRepository catalogItemReposito
 {
     public async Task<CreateCatalogItemResult> Handle(CreateCatalogItemCommand command, CancellationToken cancellationToken)
     {
-        var catalogItem = command.Dto.Adapt<CatalogItem>();
+        var catalogItem = command.CatalogItem.Adapt<CatalogItem>();
         catalogItem.Id = Guid.NewGuid();
 
         await catalogItemRepository.CreateCatalogItemAsync(catalogItem);

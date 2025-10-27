@@ -1,7 +1,5 @@
-﻿using Catalog.Application.Responses.CatalogItemResponses;
-
-namespace Catalog.Application.Commands.CatalogItemCommands;
+﻿namespace Catalog.Application.Commands.CatalogItemCommands;
 
 public record CreateCatalogItemCommand(
-    CreateCatalogItemDto Dto
+    CreateCatalogItemDto CatalogItem
 ) : IRequest<CreateCatalogItemResult>;
